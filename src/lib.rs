@@ -35,7 +35,7 @@ use std::io;
 use std::process::{Child, ExitStatus};
 use std::time::Duration;
 
-#[cfg(unix)]
+#[cfg(any(unix, target_vendor = "wasmer"))]
 #[path = "unix.rs"]
 mod imp;
 #[cfg(windows)]
