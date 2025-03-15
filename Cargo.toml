@@ -17,5 +17,4 @@ categories = ["os"]
 travis-ci = { repository = "alexcrichton/wait-timeout" }
 appveyor = { repository = "alexcrichton/wait-timeout" }
 
-[target.'cfg(unix)'.dependencies]
-libc = "0.2.56"
+libc = { git = "https://github.com/cristibctr/libc-0.2.169", branch = "wasix-0.2.169" }

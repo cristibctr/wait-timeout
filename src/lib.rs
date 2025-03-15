@@ -31,14 +31,14 @@
 #![deny(missing_docs, warnings)]
 #![doc(html_root_url = "https://docs.rs/wait-timeout/0.1")]
 
-#[cfg(unix)]
+#[cfg(any(unix, target_vendor = "wasmer"))]
 extern crate libc;
 
 use std::io;
 use std::process::{Child, ExitStatus};
 use std::time::Duration;
 
-#[cfg(unix)]
+#[cfg(any(unix, target_vendor = "wasmer"))]
 #[path = "unix.rs"]
 mod imp;
 #[cfg(windows)]

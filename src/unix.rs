@@ -21,8 +21,10 @@ use std::cmp;
 use std::collections::HashMap;
 use std::io::{self, Read, Write};
 use std::mem;
-use std::os::unix::net::UnixStream;
-use std::os::unix::prelude::*;
+#[cfg(not(target_vendor = "wasmer"))]
+use std::os::unix::{net::UnixStream, prelude::*};
+#[cfg(target_vendor = "wasmer")]
+use std::os::wasi::{net::UnixStream, prelude::*};
 use std::process::{Child, ExitStatus};
 use std::sync::{Mutex, Once};
 use std::time::{Duration, Instant};
